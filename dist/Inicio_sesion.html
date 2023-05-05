@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesion</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style/principal.css">
+</head>
+
+<body>
+    <section class="container text-center">
+        <h1>Registro de usuario</h1>
+        <form>
+            <input type="hidden" name="register">
+            <div class="inner-col">
+                <label class="pr-2" for="name">Nombre Completo</label>
+                <input class="ml-4" type="text" name="name" id="name">
+            </div>
+            <div class="inner-col">
+                <label class="" for="user">Nombre de usuario</label>
+                <input class="ml-4" type="text" name="user" id="user">
+            </div>
+            <div class="inner-col">
+                <label class="pr-1" for="email">Correo Electrónico</label>
+                <input class="ml-4" type="text" name="email" id="email">
+            </div>
+            <div class="inner-col">
+                <label class="pr-5" for="password">Contraseña</label>
+                <input class="ml-4" type="text" name="password" id="password">
+            </div>
+            <input class="btn btn-danger" type="submit" value="Registrarse">
+        </form>
+    </section>
+
+    <hr class="mt-5 mb-5" style="height: 5px;background-color: red;">
+
+    <Section class="container text-center">
+        <h2>Inicio de Sesión</h2>
+        
+        <form method="POST" action="#">
+            <input type="hidden" name="login">
+            <div class="inner-col">
+                <label for="user">Nombre de usuario</label>
+                <input class="ml-4" type="text" name="user" id="user">
+            </div>
+            <div class="inner-col">
+                <label class="pr-5" for="password">Contraseña</label>
+                <input class="ml-4" type="text" name="password" id="password">
+            </div>
+            <input class="btn btn-danger" type="submit" value="Iniciar sesion">
+        </form>
+    </Section>
+
+</body>
+
+</html>

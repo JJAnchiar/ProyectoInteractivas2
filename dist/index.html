@@ -64,7 +64,8 @@
         </nav>
     </header>
 
-    <main>
+    <main id="app">
+    <!--
         <section class="mt-5 container">
             <div id="carousel" class="carousel carousel-dark slide d-sm-inline-flex" data-bs-ride="carousel">
                 <div class="carousel-indicators">
@@ -106,78 +107,20 @@
                 </button>
             </div>
         </section>
+    -->
+
+    <recipe-details :image="recipes[selectedIndex].image" :name="recipes[selectedIndex].name"
+        :ingredients="recipes[selectedIndex].ingredients" :instructions="recipes[selectedIndex].instructions"
+        v-on:prevrecipe="onClickPrevRecipe" v-on:nextrecipe="onClickNextRecipe"></recipe-details>
 
         <section class="row mt-5">
             <h2 class="mt-3 mb-5">Recetas mas votadas</h2>
             <section class="row">
-                <div class="col-md-3">
-                    <div class="card border-light shadow">
-                        <img class="card-img-top" src="./images/banana-pancakes.jpg" alt="featured-recipe">
-                        <div class="card-body">
-                            <p>Categoria</p>
-                            <h5 class="card-title">nombre</h5>
-                            <p class="mb-0">tiempo</p>
-                            <p class="mb-0">dificultad</p>
-                            <p class="mb-0">likes</p>
-                            <ul class="nav nav-underline me-auto mt-2">
-                                <button class="btn-danger btn m-auto" v-on:click="onClickLike(index)">Like</button>
-                                <button class="btn-warning btn m-auto" v-on:click="onClickUnlike(index)">Unlike</button>
-                                <button class="btn-dark m-auto btn text-center">View Recipe</button>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card border-light shadow">
-                        <img class="card-img-top" src="./images/big-mac.jpg" alt="featured-recipe">
-                        <div class="card-body">
-                            <p>Categoria</p>
-                            <h5 class="card-title">nombre</h5>
-                            <p class="mb-0">tiempo</p>
-                            <p class="mb-0">dificultad</p>
-                            <p class="mb-0">likes</p>
-                            <ul class="nav nav-underline me-auto mt-2">
-                                <button class="btn-danger btn m-auto" v-on:click="onClickLike(index)">Like</button>
-                                <button class="btn-warning btn m-auto" v-on:click="onClickUnlike(index)">Unlike</button>
-                                <button class="btn-dark m-auto btn text-center">View Recipe</button>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card border-light shadow">
-                        <img class="card-img-top" src="./images/chicken-enchilada-casserole.jpg" alt="featured-recipe">
-                        <div class="card-body">
-                            <p>Categoria</p>
-                            <h5 class="card-title">nombre</h5>
-                            <p class="mb-0">tiempo</p>
-                            <p class="mb-0">dificultad</p>
-                            <p class="mb-0">likes</p>
-                            <ul class="nav nav-underline me-auto mt-2">
-                                <button class="btn-danger btn m-auto" v-on:click="onClickLike(index)">Like</button>
-                                <button class="btn-warning btn m-auto" v-on:click="onClickUnlike(index)">Unlike</button>
-                                <button class="btn-dark m-auto btn text-center">View Recipe</button>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card border-light shadow">
-                        <img class="card-img-top" src="./images/sushi.jpg" alt="featured-recipe">
-                        <div class="card-body">
-                            <p>Categoria</p>
-                            <h5 class="card-title">nombre</h5>
-                            <p class="mb-0">tiempo</p>
-                            <p class="mb-0">dificultad</p>
-                            <p class="mb-0">likes</p>
-                            <ul class="nav nav-underline me-auto mt-2">
-                                <button class="btn-danger btn m-auto" v-on:click="onClickLike(index)">Like</button>
-                                <button class="btn-warning btn m-auto" v-on:click="onClickUnlike(index)">Unlike</button>
-                                <button class="btn-dark m-auto btn text-center">View Recipe</button>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                <div v-for="(item, index) in recipes" class="col-md-3">
+                    <recipe-card :image="item.image" :category="item.category" :name="item.name"
+                    :description="item.instructions" :time="item.totalTime" :level="item.level" :likes="item.likes"
+                    :index="index" v-on:recipelike="onClickRecipeLike" v-on:recipeunlike="onClickRecipeUnlike"
+                    v-on:recipedetails="onClickRecipeDetails"></recipe-card>
             </section>
         </section>
     </main>
@@ -185,4 +128,12 @@
     <footer></footer>
 </body>
 
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script src="https://unpkg.com/mitt/dist/mitt.umd.js"></script>
+<script src="./js/main.js"></script>
+<script src="./js/components/RecipeCard.js"></script>
+<script src="./js/components/RecipeDetails.js"></script>
+<script>
+    const mountedApp = app.mount("#app");
+</script>
 </html>

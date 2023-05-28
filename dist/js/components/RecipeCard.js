@@ -29,31 +29,30 @@ app.component('recipe-card', {
     },
     methods:{
         onClickLike(){
-            this.$emit('recipelike', this.index);
+            this.addLikes++;
         },
         onClickUnlike(){
-            this.$emit('recipeunlike', this.index);
+            if(this.addLikes > 0) this.addLikes--;
         },
         onClickViewRecipe(){
-            this.$test.emit('foo', "works!");
         },
     },
     data(){
         return{
-            counter: 0
+            counter: 0,
+            addLikes : this.likes
         }
     },
     template:
     /*html*/
-    ` <div class="card p-3 mb-5">
+    ` <div class="card p-3 mb-5 bg-secondary">
     <img class="card-img-top rounded" v-bind:src="image" alt="featured-recipe">
     <div class="card-body p-0">
-        <p class="mt-2">{{ category }}</p>
-        <h5 class="card-title">{{ name }}</h5>
-        <p class="card-text">{{ description }}</p>
-        <p>{{ time }}</p>
-        <p>{{ level }}</p>
-        <p>{{ likes }}</p>
+        <p class="mt-2 text-warning">{{ category }}</p>
+        <h5 class="card-title text-light">{{ name }}</h5>
+        <p class="text-white">{{ time }}</p>
+        <p class="text-white">{{ level }}</p>
+        <p class="text-white">{{ likes }}</p>
             <button class="btn btn-danger me-2" v-on:click="onClickLike()">Like</button>
             <button class="btn btn-warning me-2" v-on:click="onClickUnlike()">Unlike</button>
             <button class="btn btn-dark" v-on:click="onClickViewRecipe()" data-bs-toggle="modal"

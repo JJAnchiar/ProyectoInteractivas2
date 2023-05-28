@@ -12,57 +12,18 @@
 
 <body class="bg-dark">
     <header>
-        <nav class="navbar navbar-expand-lg bg-black">
+        <nav class="navbar fixed-top bg-black">
             <div class="container-fluid ms-1">
                 <button class="btn btn-outline-danger me-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas">
                     &#9776
                   </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                           <a class="navbar-brand text-white text-center" href="#">Receticas</a>
-                        <!--<li class="nav-item dropdown me-1">
-                            <button class="btn btn-outline-danger dropdown-toggle" type="button" data-bs-toggle="categorias"
-                                aria-expanded="false">Categorias</button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item">Desayuno</button></li>
-                                <li><button class="dropdown-item">Bebidas</button></li>
-                                <li><button class="dropdown-item">Entradas</button></li>
-                                <li><button class="dropdown-item">Almuerzo</button></li>
-                                <li><button class="dropdown-item">Postres</button></li>
-                                <li><button class="dropdown-item">Sopas</button></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown me-1">
-                            <button class="btn btn-outline-danger dropdown-toggle" role="button" data-bs-toggle="complejidad" aria-expanded="false">Complejidad</button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item">Facil</button></li>
-                                <li><button class="dropdown-item">Intermedio</button></li>
-                                <li><button class="dropdown-item">Avanzado</button></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <button class="btn btn-outline-danger dropdown-toggle" role="button" data-bs-toggle="ocasiones" aria-expanded="false">Ocasiones</button>
-                            <ul class="dropdown-menu">
-                                <li><button class="dropdown-item">Todas</button></li>
-                                <li><button class="dropdown-item">Cumpleaños</button></li>
-                                <li><button class="dropdown-item">Día del padre</button></li>
-                                <li><button class="dropdown-item">Día de la madre</button></li>
-                                <li><button class="dropdown-item">Día del niño</button></li>
-                                <li><button class="dropdown-item">Navidad</button></li>
-                                <li><button class="dropdown-item">Semana Santa</button></li>
-                                <li><button class="dropdown-item">Verano</button></li>
-                            </ul>
-                        </li>-->
-                    </ul>
                     <a class="btn btn-danger me-2" href="#">Profile</a>
-                    <!--<form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
-                        <button class="btn btn-outline-danger" type="submit">Search</button> -->
-                    </form>
                 </div>
             </div>
         </nav>
     </header>
+    <section id="app">
 
     <div class="offcanvas offcanvas-start bg-black" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
         <div class="offcanvas-header">
@@ -89,72 +50,28 @@
         </div>
       </div>
 
-    <main id="app">
-    <!--
-        <section class="mt-5 container">
-            <div id="carousel" class="carousel carousel-dark slide d-sm-inline-flex" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active" data-bs-interval="10000">
-                        <img src="./images/banana-pancakes.jpg" class="d-block w-100" alt="banana-pancakes">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Banana Pancakes</h5>
-                            <p>Pancakes hechos con bananas</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item" data-bs-interval="2000">
-                        <img src="./images/big-mac.jpg" class="d-block w-100" alt="big-mac">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Big Mac</h5>
-                            <p>La clasica big mac</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="./images/chocolate-souffle.jpg" class="d-block w-100" alt="chocolate-souffle">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Souffle de chocolate</h5>
-                            <p>Sabroso soufle de chocolate</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
-            </div>
-        </section>
-    -->
-
+    <main>
     <recipe-details :image="recipes[selectedIndex].image" :name="recipes[selectedIndex].name"
-        :ingredients="recipes[selectedIndex].ingredients" :instructions="recipes[selectedIndex].instructions"
-        v-on:prevrecipe="onClickPrevRecipe" v-on:nextrecipe="onClickNextRecipe"></recipe-details>
+        :ingredients="recipes[selectedIndex].ingredients" :instructions="recipes[selectedIndex].instructions"></recipe-details>
 
         <section class="row mt-5">
             <h2 class="mt-3 mb-5 text-light">Recetas mas votadas</h2>
             <section class="row">
                 <div v-for="(item, index) in recipes" class="col-md-3">
                     <recipe-card :image="item.image" :category="item.category" :name="item.name"
-                    :description="item.instructions" :time="item.totalTime" :level="item.level" :likes="item.likes"
-                    :index="index" v-on:recipelike="onClickRecipeLike" v-on:recipeunlike="onClickRecipeUnlike"
+                    :description="item.instructions" :time="item.Time" :level="item.level" :likes="item.likes"
+                    :index="index" v-on:recipelike="onClickLike" v-on:recipeunlike="onClickUnlike"
                     v-on:recipedetails="onClickRecipeDetails"></recipe-card>
             </section>
         </section>
     </main>
-
+</section>
     <footer></footer>
 </body>
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 <script src="https://unpkg.com/mitt/dist/mitt.umd.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="./js/main.js"></script>
 <script src="./js/components/RecipeCard.js"></script>
 <script src="./js/components/RecipeDetails.js"></script>

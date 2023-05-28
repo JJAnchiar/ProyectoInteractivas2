@@ -99,9 +99,40 @@ const app = Vue.createApp({
                 }
             )
             .catch(
-                
+                error => console.log(error)
             )
         },
+        onClickSelectedCategory(category){
+            axios({
+                method: 'get',
+                url: 'https://www.themealdb.com/api/json/v1/1/filter.php?c='+category
+            })
+            .then(
+                (response) => {
+                    let items = response.data.meals;
+                    console.log(items);
+
+                    this.recipes = [];
+
+                    items.forEach(element => {
+                        this.recipes.push ( {
+                            id:element.idMeal,
+                            image: element.strMealThumb,
+                            name: element.strMeal,
+                            category: category,
+                            time: "20 min",
+                            level: "Easy",
+                            likes: 18,
+                            ingredients: "NA",
+                            instructions: "NA"
+                        });
+                    });
+                }
+            )
+            .catch(
+                error => console.log(error)
+            );
+        }
     },
 })
 

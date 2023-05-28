@@ -14,9 +14,13 @@ app.component('recipe-details', {
         }
     },
     mounted(){
+        this.$test.on('foo', function(data){
+            console.log(data);
+        });
     },
     methods:{
         onClickViewRecipe(){
+            console.log("view recipe");
         },
     },
     template:

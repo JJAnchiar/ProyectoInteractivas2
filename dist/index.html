@@ -38,21 +38,16 @@
             <button class="btn btn-outline-danger dropdown-toggle" type="button" data-bs-toggle="dropdown">
               Categorias
             </button>
-            <ul class="dropdown-menu bg-dark">
-                <li><button class="dropdown-item text-danger bg-gradient">Desayuno</button></li>
-                <li><button class="dropdown-item text-danger bg-gradient">Bebidas</button></li>
-                <li><button class="dropdown-item text-danger bg-gradient">Entradas</button></li>
-                <li><button class="dropdown-item text-danger bg-gradient">Almuerzo</button></li>
-                <li><button class="dropdown-item text-danger bg-gradient">Postres</button></li>
-                <li><button class="dropdown-item text-danger bg-gradient">Sopas</button></li>
+            <ul v-for="(category, index) in categories" class="dropdown-menu bg-dark">
+                <recipe-category-button :name="category.name" v-on:selectedcategory="onClickSelectedCategory"></recipe-category-button>
             </ul>
           </div>
         </div>
       </div>
 
     <main>
-    <recipe-details :image="recipes[selectedIndex].image" :name="recipes[selectedIndex].name"
-        :ingredients="recipes[selectedIndex].ingredients" :instructions="recipes[selectedIndex].instructions"></recipe-details>
+    <recipe-details :image="recipe.image" :name="recipe.name"
+        :ingredients="recipe.ingredients" :instructions="recipe.instructions"></recipe-details>
 
         <section class="row mt-5">
             <h2 class="mt-3 mb-5 text-light">Recetas mas votadas</h2>
@@ -60,7 +55,7 @@
                 <div v-for="(item, index) in recipes" class="col-md-3">
                     <recipe-card :image="item.image" :category="item.category" :name="item.name"
                     :description="item.instructions" :time="item.Time" :level="item.level" :likes="item.likes"
-                    :index="index" v-on:recipelike="onClickLike" v-on:recipeunlike="onClickUnlike"
+                    :index="index" v-on:like="onClickLike" v-on:unlike="onClickUnlike"
                     v-on:recipedetails="onClickRecipeDetails"></recipe-card>
             </section>
         </section>

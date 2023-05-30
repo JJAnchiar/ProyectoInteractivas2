@@ -21,6 +21,7 @@ app.component('recipe-details', {
     methods:{
         onClickViewRecipe(){
             console.log("view recipe");
+            this.$test.emit('foo', "works!");
         },
     },
     template:

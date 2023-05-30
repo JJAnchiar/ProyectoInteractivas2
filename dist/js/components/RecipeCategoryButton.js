@@ -6,10 +6,11 @@ app.component('recipe-category-button', {
     },
     methods: {
         onClickCategoryButton(){
+            console.log(this.name);
             this.$emit('selectedcategory', this.name)
         }
     },
     template:
     /*html*/
-    `<li><button class="dropdown-item text-danger bg-gradient"  v-on:click="onClickCategoryButton">{{ name }}</button></li>`
+    `<button class="dropdown-item text-danger bg-gradient"  v-on:click="onClickCategoryButton">{{ name }}</button>`
 })

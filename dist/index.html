@@ -39,7 +39,7 @@
               Categorias
             </button>
             <ul v-for="(category, index) in categories" class="dropdown-menu bg-dark">
-                <recipe-category-button :name="category.name" v-on:selectedcategory="onClickSelectedCategory"></recipe-category-button>
+                <li><recipe-category-button :name="category.name" v-on:selectedcategory="onClickSelectedCategory"></recipe-category-button></li>
             </ul>
           </div>
         </div>
@@ -54,8 +54,8 @@
             <section class="row">
                 <div v-for="(item, index) in recipes" class="col-md-3">
                     <recipe-card :image="item.image" :category="item.category" :name="item.name"
-                    :description="item.instructions" :time="item.Time" :level="item.level" :likes="item.likes"
-                    :index="index" v-on:like="onClickLike" v-on:unlike="onClickUnlike"
+                    :description="item.instructions" :time="item.time" :level="item.level" :likes="item.likes"
+                    :index="item.id" v-on:like="onClickLike" v-on:unlike="onClickUnlike"
                     v-on:recipedetails="onClickRecipeDetails"></recipe-card>
             </section>
         </section>
@@ -70,6 +70,7 @@
 <script src="./js/main.js"></script>
 <script src="./js/components/RecipeCard.js"></script>
 <script src="./js/components/RecipeDetails.js"></script>
+<script src="./js/components/RecipeCategoryButton.js"></script>
 <script>
     const mountedApp = app.mount("#app");
 </script>

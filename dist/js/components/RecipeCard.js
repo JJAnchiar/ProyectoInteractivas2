@@ -29,15 +29,12 @@ app.component('recipe-card', {
     },
     methods:{
         onClickLike(){
-            console.log("like");
             this.addLikes++;
         },
         onClickUnlike(){
-            console.log("unlike");
             if(this.addLikes > 0) this.addLikes--;
         },
         onClickViewRecipe(){
-            console.log("view recipe");
             this.$emit('recipedetails', this.index);
         },
     },

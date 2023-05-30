@@ -2,7 +2,6 @@ const app = Vue.createApp({
     data() {
         return{
             loading: true,
-            selectedIndex: 0,
             all_recipes: [],
             hasRecipes: true,
             recipes:[
@@ -37,7 +36,6 @@ const app = Vue.createApp({
         .then(
             (response) => {
                 let items = response.data.meals;
-                console.log(items);
 
                 this.recipes = [];
 
@@ -70,7 +68,6 @@ const app = Vue.createApp({
             if(this.recipes[index].likes > 0)this.recipes[index].likes -= 1;
         },
         onClickRecipeDetails(index){
-            console.log("RECIPE ID => " + index);
             axios({
                 method: 'get',
                 url: 'https://www.themealdb.com/api/json/v1/1/lookup.php?i='+index
@@ -78,7 +75,6 @@ const app = Vue.createApp({
             .then(
                 (response) => {
                     let item = response.data.meals;
-                    console.log(item);
                     this.recipe.id = item[0].idMeal;
                     this.recipe.image = item[0].strMealThumb;
                     this.recipe.name = item[0].strMeal;
@@ -110,7 +106,6 @@ const app = Vue.createApp({
             .then(
                 (response) => {
                     let items = response.data.meals;
-                    console.log(items);
 
                     this.recipes = [];
 

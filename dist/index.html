@@ -39,7 +39,9 @@
               Categorias
             </button>
             <ul v-for="(category, index) in categories" class="dropdown-menu bg-dark">
-                <li><recipe-category-button :name="category.name" v-on:selectedcategory="onClickSelectedCategory"></recipe-category-button></li>
+                <li v-for="(category, index) in categories">
+                    <recipe-category-button :name="category.name" v-on:selectedcategory="onClickSelectedCategory"></recipe-category-button>
+                </li>
             </ul>
           </div>
         </div>
@@ -51,7 +53,7 @@
 
         <section class="row mt-5">
             <h2 class="mt-3 mb-5 text-light">Recetas mas votadas</h2>
-            <section class="row">
+            <section class="row ms-1 mb-1">
                 <div v-for="(item, index) in recipes" class="col-md-3">
                     <recipe-card :image="item.image" :category="item.category" :name="item.name"
                     :description="item.instructions" :time="item.time" :level="item.level" :likes="item.likes"

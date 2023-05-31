@@ -53,7 +53,7 @@ app.component('recipe-card', {
         <h5 class="card-title text-light">{{ name }}</h5>
         <p class="text-white">{{ time }}</p>
         <p class="text-white">{{ level }}</p>
-        <p class="text-white">{{ likes }}</p>
+        <p class="text-white">{{ addLikes }}</p>
             <button class="btn btn-danger me-2" v-on:click="onClickLike()">Like</button>
             <button class="btn btn-warning me-2" v-on:click="onClickUnlike()">Unlike</button>
             <button class="btn btn-dark" v-on:click="onClickViewRecipe()" data-bs-toggle="modal"
